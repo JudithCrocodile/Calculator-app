@@ -5,20 +5,21 @@ export default defineNuxtConfig({
   modules: [
     // Simple usage
     '@nuxtjs/stylelint-module',
-    '@nuxt/eslint',
-
-    // With options
-    [
-      '@nuxtjs/stylelint-module',
-      {
-        /* module options */
-      }
-    ]
+    '@nuxt/eslint'
   ],
+
+  css: ['~/assets/css/global.scss'],
 
   eslint: {
     config: {
       stylistic: true // <---
+    }
+  },
+
+  postcss: {
+    plugins: {
+      tailwindcss: {},
+      autoprefixer: {}
     }
   }
 })
