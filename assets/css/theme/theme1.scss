@@ -22,18 +22,23 @@
 // - Very dark grayish blue: hsl(221, 14%, 31%)
 // - White: hsl(0, 0%, 100%)
 
-$main-bg: hsl(222, 26%, 31%);
-$toggle-bg: hsl(223, 31%, 20%);
-$screen-bg: hsl(224, 36%, 15%);
+// #### Backgrounds
+$main-bg: hsl(222deg 26% 31%);
+$toggle-bg: hsl(223deg 31% 20%);
+$screen-bg: hsl(224deg 36% 15%);
 
-$key1-bg: hsl(225, 21%, 49%);
-$key1-shadow: hsl(224, 28%, 35%);
+// #### Keys 2
+$key2-bg: hsl(225deg 21% 49%);
+$key2-shadow: hsl(224deg 28% 35%);
 
-$key2-bg: hsl(6, 63%, 50%);
-$key2-shadow: hsl(6, 70%, 34%);
+// #### Keys 3
+$key3-bg: hsl(6deg 63% 50%);
+$key3-shadow: hsl(6deg 70% 34%);
 
-$key3-bg: hsl(30, 25%, 89%);
-$key3-shadow: hsl(28, 16%, 65%);
+// #### Keys 1
+$key1-bg: hsl(30deg 25% 89%);
+$key1-shadow: hsl(28deg 16% 65%);
 
-$text: hsl(221, 14%, 31%);
-$text-light: hsl(0, 0%, 100%);
+// #### Text
+$text: hsl(221deg 14% 31%);
+$text-light: hsl(0deg 0% 100%);

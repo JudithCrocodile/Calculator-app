@@ -8,7 +8,7 @@ export default defineNuxtConfig({
     '@nuxt/eslint'
   ],
 
-  css: ['~/assets/css/global.scss'],
+  css: ['~/assets/css/global.scss', '~/assets/css/theme/theme1.scss'],
 
   eslint: {
     config: {

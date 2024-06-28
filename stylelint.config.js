@@ -6,7 +6,10 @@ module.exports = {
       {
         ignoreAtRules: ['tailwind']
       }
-    ]
+    ],
+
+    'scss/at-import-partial-extension': 'always',
+    'scss/at-import-partial-extension-blacklist': ['']
   },
   ignoreFiles: ['**/*.js', '**/*.md'],
   overrides: [
