@@ -8,7 +8,7 @@ export default defineNuxtConfig({
     '@nuxt/eslint'
   ],
 
-  css: ['~/assets/css/global.scss', '~/assets/css/theme/theme1.scss'],
+  css: ['~/assets/css/global.scss'],
 
   eslint: {
     config: {
@@ -24,5 +24,15 @@ export default defineNuxtConfig({
   },
   typescript: {
     typeCheck: true
+  },
+
+  vite: {
+    css: {
+      preprocessorOptions: {
+        scss: {
+          additionalData: '@use "~/assets/css/theme/variable.scss" as *;'
+        }
+      }
+    }
   }
 })

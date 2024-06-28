@@ -3,6 +3,7 @@ import { ref } from 'vue'
 const val1 = ref<string>('0')
 const val2 = ref<string | null>(null)
 const currentSign = ref<string>('')
+const curentTheme = ref<number>(1)
 
 const calc = function (): void {
   let result: number = 0
@@ -60,10 +61,25 @@ const signClick = function (element: any): void {
 
   calc()
 }
+
+const changeTheme = function (element: any): void {
+  let current: number = curentTheme.value
+  current += 1
+  if (current > 3) {
+    current = 1
+  }
+  curentTheme.value = current
+}
+
+const formatNumber = (val: string): string => {
+  if (val === null) return val
+  const num = Number(val)
+  return num.toLocaleString()
+}
 </script>
 
 <template>
-  <div class="calculator">
+  <div class="calculator" :class="[`theme${curentTheme}`]">
     <div class="calculator__container">
       <div class="calculator__top flex justify-between items-end">
         <div class="calculator__title text-sm">calc</div>
@@ -77,7 +93,7 @@ const signClick = function (element: any): void {
               <span>2</span>
               <span>3</span>
             </div>
-            <div class="switch cursor-pointer">
+            <div class="switch cursor-pointer" @click="changeTheme">
               <div class="switch__wrapper">
                 <div class="switch__ball"></div>
               </div>
@@ -88,10 +104,10 @@ const signClick = function (element: any): void {
       <div class="calculator__input-container">
         <div class="calculator__input">
           <p v-if="val2 === null">
-            {{ val1 }}
+            {{ formatNumber(val1) }}
           </p>
           <p v-else>
-            {{ val2 }}
+            {{ formatNumber(val2) }}
           </p>
         </div>
       </div>
@@ -230,17 +246,17 @@ const signClick = function (element: any): void {
 </template>
 
 <style lang="scss" scoped>
-@import '~/assets/css/theme/theme1.scss';
-
-$radius: 0.3rem;
+:root {
+  --radius: 0.3rem;
+}
 
 .calculator {
-  background: $main-bg;
+  background: var(--main-bg);
   width: 100%;
   height: 100vh;
 
   &__top {
-    color: $text-light;
+    color: var(--input-text-color);
     margin-bottom: 1rem;
   }
 
@@ -257,11 +273,11 @@ $radius: 0.3rem;
   }
 
   &__input-container {
-    background: $screen-bg;
-    color: $text-light;
+    background: var(--screen-bg);
+    color: var(--input-text-color);
     width: 100%;
     padding: 1rem;
-    border-radius: $radius;
+    border-radius: var(--radius);
     text-align: right;
     font-size: 1.5rem;
   }
@@ -275,25 +291,26 @@ $radius: 0.3rem;
   }
 
   &__keys-container {
-    background: $toggle-bg;
+    background: var(--toggle-bg);
     margin-top: 0.5rem;
-    border-radius: $radius;
+    border-radius: var(--radius);
     padding: 1rem;
   }
 
   &__key {
-    border-radius: $radius;
+    border-radius: var(--radius);
     position: relative;
     padding-top: 6px;
     transition: 300ms;
+    color: var(--text);
 
     &:hover {
       filter: brightness(90%);
     }
 
     &.key-1 {
-      background: $key1-bg;
-      box-shadow: 0 5px 0 $key1-shadow;
+      background: var(--key1-bg);
+      box-shadow: 0 5px 0 var(--key1-shadow);
 
       span {
         opacity: 0.6;
@@ -301,9 +318,9 @@ $radius: 0.3rem;
     }
 
     &.key-2 {
-      background: $key2-bg;
-      box-shadow: 0 5px 0 $key2-shadow;
-      color: $text-light;
+      background: var(--key2-bg);
+      box-shadow: 0 5px 0 var(--key2-shadow);
+      color: var(--text-light);
       font-size: 0.7rem;
 
       span {
@@ -312,14 +329,12 @@ $radius: 0.3rem;
     }
 
     &.key-3 {
-      background: $key3-bg;
-      box-shadow: 0 5px 0 $key3-shadow;
-      color: $text-light;
+      background: var(--key3-bg);
+      box-shadow: 0 5px 0 var(--key3-shadow);
+      color: var(--equal-text-color);
     }
 
     &:active {
-      //   background-color: #3e8e41;
-      //   box-shadow: 0 5px #666;
       transform: translateY(4px);
     }
   }
@@ -328,7 +343,7 @@ $radius: 0.3rem;
 .switch {
   &__wrapper {
     border-radius: 1rem;
-    background: $toggle-bg;
+    background: var(--toggle-bg);
     width: 2.2rem;
     height: 0.8rem;
     position: relative;
@@ -336,13 +351,43 @@ $radius: 0.3rem;
   }
 
   &__ball {
-    background: $key3-bg;
+    background: var(--key3-bg);
     height: 0.5rem;
     width: 0.5rem;
     border-radius: 50%;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
+    transition: 300ms;
+  }
+}
+
+.theme1 {
+  .switch {
+    &__ball {
+      right: calc(100% - 0.2rem);
+      left: 0.2rem;
+      transform: translate(0, -50%);
+    }
+  }
+}
+
+.theme2 {
+  .switch {
+    &__ball {
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+}
+
+.theme3 {
+  .switch {
+    &__ball {
+      left: calc(100% - 0.2rem);
+      right: 0.2rem;
+      transform: translate(-100%, -50%);
+    }
   }
 }
 
