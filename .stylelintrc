@@ -1,0 +1,11 @@
+{
+  "rules": {
+    "function-calc-no-invalid": null,
+    "selector-type-no-unknown": [
+      true,
+      {
+        "ignore": ["custom-elements"]
+      }
+    ]
+  }
+}

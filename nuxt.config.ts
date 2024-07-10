@@ -4,7 +4,7 @@ export default defineNuxtConfig({
 
   modules: [
     // Simple usage
-    '@nuxtjs/stylelint-module',
+    // '@nuxtjs/stylelint-module',
     '@nuxt/eslint',
     '@nuxt/scripts'
   ],
@@ -20,7 +20,8 @@ export default defineNuxtConfig({
   postcss: {
     plugins: {
       tailwindcss: {},
-      autoprefixer: {}
+      autoprefixer: {},
+      cssnano: false
     }
   },
   typescript: {

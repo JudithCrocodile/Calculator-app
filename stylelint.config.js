@@ -22,5 +22,20 @@ module.exports = {
       customSyntax: 'postcss-html'
     }
   ],
-  extends: 'stylelint-config-standard-scss'
+  extends: [
+    'stylelint-config-standard',
+    'stylelint-config-html/vue',
+    'stylelint-config-standard-scss',
+    'stylelint-config-recommended-vue',
+    'stylelint-config-recommended-scss',
+    'stylelint-config-recommended-vue/scss',
+    'stylelint-config-html',
+    'stylelint-config-html/html',
+    'stylelint-config-html/xml',
+    'stylelint-config-html/vue',
+    'stylelint-config-html/svelte',
+    'stylelint-config-html/astro',
+    'stylelint-config-html/php'
+  ],
+  ignore: ['custom-elements']
 }
