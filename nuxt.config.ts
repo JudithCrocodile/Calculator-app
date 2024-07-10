@@ -5,7 +5,8 @@ export default defineNuxtConfig({
   modules: [
     // Simple usage
     '@nuxtjs/stylelint-module',
-    '@nuxt/eslint'
+    '@nuxt/eslint',
+    '@nuxt/scripts'
   ],
 
   css: ['~/assets/css/global.scss'],
@@ -34,5 +35,17 @@ export default defineNuxtConfig({
         }
       }
     }
-  }
+  },
+  generate: {
+    dir: 'www'
+  },
+  build: {
+    publicPath: '/android_asset/www/front-end'
+  },
+  scripts: [
+    {
+      src: '/cordova.js',
+      type: 'text/javascript'
+    }
+  ]
 })
