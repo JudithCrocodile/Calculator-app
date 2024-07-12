@@ -45,6 +45,7 @@ const del = function (): void {
 }
 
 const keyClick = function (element: any): void {
+  console.log('keyClick', element.currentTarget.getAttribute('data-key'))
   const key = element.currentTarget.getAttribute('data-key')
   if (currentSign.value !== '') {
     val2.value = val2.value || ''
@@ -56,6 +57,7 @@ const keyClick = function (element: any): void {
 }
 
 const signClick = function (element: any): void {
+  console.log('signClick', element.currentTarget.getAttribute('data-key'))
   const key = element.currentTarget.getAttribute('data-key')
   currentSign.value = key
 
@@ -63,6 +65,7 @@ const signClick = function (element: any): void {
 }
 
 const changeTheme = function (element: any): void {
+  console.log('changeTheme')
   let current: number = curentTheme.value
   current += 1
   if (current > 3) {

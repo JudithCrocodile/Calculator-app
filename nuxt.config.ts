@@ -38,7 +38,11 @@ export default defineNuxtConfig({
     }
   },
   generate: {
-    dir: 'www'
+    dir: 'www',
+    subFolders: true
+  },
+  experimental: {
+    payloadExtraction: true
   },
   build: {
     publicPath: '/android_asset/www/front-end'
